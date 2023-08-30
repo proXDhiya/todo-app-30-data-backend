@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./style/main.css">
+        <title>Todo list</title>
+    </head>
+    <body>
+        <section>
+            <nav>
+                <h1>
+                    TODO - Potato
+                </h1>
+            </nav>
+            <main>
+                <div>
+                    <h2>
+                        Todo list
+                    </h2>
+                    <div class="cards">
+
+                    </div>
+                    <div id="create-task">
+                        <img src="./images/create.png" alt="create">
+                    </div>
+                </div>
+                <div>
+                    <h2>
+                        Done list
+                    </h2>
+                    <div class="cards">
+
+                    </div>
+                    <div id="delete">
+                        <img src="./images/delete.png" alt="delete">
+                    </div>
+                </div>
+            </main>
+        </section>
+        
+        <div id="popup">
+            <div>
+                <h2>
+                    Enter your task
+                </h2>
+                <input type="text" id="task" placeholder="Enter your task">
+                <div>
+                    <button id="cancel">
+                        Cancel
+                    </button>
+                    <button id="submit">
+                        Submit
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <script src="./scripts/script.js"></script>
+    </body>
+</html>
