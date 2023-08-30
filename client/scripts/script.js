@@ -6,8 +6,10 @@ const doneCards = cards[1];
 const popup = document.querySelector('#popup');
 const cancel = document.querySelector('#cancel');
 const submit = document.querySelector('#submit');
+const url = 'https://todo-app-proxdhiya.onrender.com/'
 let popupStatus = false;
-
+let todo = [];
+let done = [];
 
 createTask.addEventListener('click', () => {
     if (popupStatus) {
@@ -30,9 +32,7 @@ const createTicketDom = (id, title, isTodo) => {
     ticket.innerHTML = `<p>${title}</p>`;
     if (isTodo) {
         ticket.addEventListener('click', async (e) => {
-            // http://localhost:3000/api/done
-            // method: POST: {id: id}
-            await fetch('http://localhost:3000/api/done', {
+            await fetch(`${url}api/done`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -46,18 +46,13 @@ const createTicketDom = (id, title, isTodo) => {
     return ticket;
 }
 
-// get data from the api
-// http://localhost:3000/api/todo
-// http://localhost:3000/api/done
-let todo = [];
-let done = [];
 (
     async function () {
         try {
-            const todoData = await fetch('http://localhost:3000/api/todo');
+            const todoData = await fetch(`${url}api/todo`);
             todo = await todoData.json();
 
-            const doneData = await fetch('http://localhost:3000/api/done');
+            const doneData = await fetch(`${url}api/done`);
             done = await doneData.json();
 
             todo.data.forEach((task) => {
@@ -75,10 +70,7 @@ let done = [];
 
 const submitEvent = async () => {
     const data = popup.querySelector('input').value;
-
-    // http://localhost:3000/api/todo
-    // method: POST: {title: data}
-    await fetch('http://localhost:3000/api/todo', {
+    await fetch(`${url}api/todo`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -104,7 +96,7 @@ submit.addEventListener('keyup', async (e) => {
 deleteTasks.addEventListener('click', async () => {
     // http://localhost:3000/api/done/all
     // method: DELETE
-    await fetch('http://localhost:3000/api/done/all', {
+    await fetch(`${url}api/done/all`, {
         method: 'DELETE'
     });
 
